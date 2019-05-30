@@ -1,0 +1,7 @@
+{
+  "name": "testBank",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

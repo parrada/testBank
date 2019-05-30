@@ -1,0 +1,82 @@
+<!--
+  Generated template for the UserCreditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color='primary'>
+    <ion-title>Solicitud del credito</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="content" padding>
+
+  <p>Ya que logramos comprobar quien eres, adiciona la siguiente información para realizar la solicitud del credito.</p>
+
+  <ion-list>
+
+    <form [formGroup]="creditForm" class="form-data" (ngSubmit)="CreditRequestValidation()">
+
+      <ion-item>
+        <ion-input placeholder="Nombre de la empresa" formControlName="companyName" [class.invalid]="!creditForm.controls.companyName.valid  && creditForm.controls.companyName.dirty"></ion-input>
+      </ion-item>
+
+      <p class="error" *ngIf="creditForm.controls.companyName.hasError('required') && (creditForm.controls.companyName.touched)">
+        Ingresa el nombre de la empresa.
+      </p>
+      <br>
+
+      <ion-item>
+        <ion-input placeholder="Nit de la empresa" formControlName="companyNit" autocomplete="off" [class.invalid]="!creditForm.controls.companyNit.valid  && creditForm.controls.companyNit.dirty"></ion-input>
+      </ion-item>
+
+      <p class="error" *ngIf="creditForm.controls.companyNit.hasError('required') && (creditForm.controls.companyNit.touched)">
+        Ingresa el nit de la empresa.
+      </p>
+
+      <p class="error" *ngIf="!creditForm.controls.companyNit.hasError('required') && creditForm.controls.companyNit.hasError('pattern')  && (creditForm.controls.companyNit.dirty)">
+        El codigo de identificación del nit es solo númerico.
+      </p>
+
+      <p class="error"
+      *ngIf="!creditForm.controls.companyNit.hasError('required') && creditForm.controls.companyNit.hasError('maxLength') && (creditForm.controls.companyNit.touched)">
+        La longitud de la identificación es de 10
+      </p>
+      <br>
+
+      <ion-item>
+        <ion-input placeholder="Salario" maxlength="9" formControlName="userSalary" autocomplete="off" [class.invalid]="!creditForm.controls.userSalary.valid  && creditForm.controls.userSalary.dirty">
+        </ion-input>
+      </ion-item>
+
+      <p class="error" *ngIf="creditForm.controls.userSalary.hasError('required') &&  (creditForm.controls.userSalary.touched)">
+        Ingresa tu salario.
+      </p>
+
+      <p class="error" *ngIf="!creditForm.controls.userSalary.hasError('required') && creditForm.controls.userSalary.hasError('pattern')  && (creditForm.controls.userSalary.dirty)">
+        El valor del salario debe contener unicamente números y debe ser un valor positivo.
+      </p>
+      <br>
+
+      <ion-item>
+        <ion-label>
+          <br>Fecha de ingreso a la empresa</ion-label>
+        <ion-datetime display-format="MMM DD, YYYY HH:mm" class="placeholder-text" formControlName="companyUserEntryDate">
+        </ion-datetime>
+      </ion-item>
+      <br>
+      <button ion-button block round type="submit" [disabled]="!creditForm.valid">Solicitar Credito</button>
+      <p class="credit-response" *ngIf="creditAnswer != ''">
+        {{creditAnswer}}
+      </p>
+    </form>
+  </ion-list>
+  <br>
+  <ion-img class="image" src="../../assets/imgs/Accenture-main-logo.jpg">
+  </ion-img>
+
+</ion-content>

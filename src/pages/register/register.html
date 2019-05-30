@@ -1,0 +1,58 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding>
+  <ion-img class="image" src="../../assets/imgs/Accenture-main-logo.jpg">
+  </ion-img>
+  <h4>
+    Hola.
+  </h4>
+  <p>
+    Bienvenido a testBank Digita tus datos para poder registrarte
+  </p>
+  <form [formGroup]="registerForm" class="form-data" (ngSubmit)="validateUser()">
+    <ion-item>
+      <ion-input formControlName="firstname" placeholder="Nombre" autocomplete="off" [class.invalid]="!registerForm.controls.firstname.valid  && registerForm.controls.firstname.touched">
+      </ion-input>
+    </ion-item>
+
+    <p class="error" *ngIf="registerForm.controls.firstname.hasError('required') && (registerForm.controls.firstname.touched)">
+      Ingresa tu nombre
+    </p>
+    <br>
+    <ion-item>
+      <ion-input formControlName="lastname" placeholder="Apellido" autocomplete="off" [class.invalid]="!registerForm.controls.lastname.valid  && registerForm.controls.lastname.touched">
+      </ion-input>
+    </ion-item>
+    <p class="error" *ngIf="registerForm.controls.lastname.hasError('required') && (registerForm.controls.lastname.touched)">
+      Ingresa tu apellido
+    </p>
+    <br>
+    <ion-item>
+      <ion-input formControlName="identification" placeholder="No identificación" autocomplete="off" [class.invalid]="!registerForm.controls.identification.valid  && registerForm.controls.identification.touched">
+      </ion-input>
+    </ion-item>
+    <p class="error" *ngIf="registerForm.controls.identification.hasError('required') && (registerForm.controls.identification.touched)">
+      Ingresa tu identificación
+    </p>
+
+    <p class="error" *ngIf="!registerForm.controls.identification.hasError('required') && (registerForm.controls.identification.touched) && registerForm.controls.identification.hasError('pattern')">
+      La identificación digitada debe ser númerica
+    </p>
+
+    <p class="error" *ngIf="!registerForm.controls.identification.hasError('required') && registerForm.controls.identification.hasError('minLength') && registerForm.controls.identification.hasError('maxLength')  && (registerForm.controls.identification.touched)">
+      La longitud de la identificación es de 10
+    </p>
+    <ion-item>
+      <ion-label>
+        <br>Fecha de nacimiento</ion-label>
+      <ion-datetime display-format="MMM DD, YYYY HH:mm" formControlName="birthdate">
+      </ion-datetime>
+    </ion-item>
+    <div padding></div>
+    <button ion-button block type="submit" color="secondary">Registrarse</button>
+  </form>
+</ion-content>
