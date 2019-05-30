@@ -1,7 +1,7 @@
 # TestBank
 
 
-Ionic v3 Application for register user and make credit request in a bank
+Ionic v3 Mobile application developed in order to register users to a bank system and make credit requests
 
 
 ## Run the app in DEV mode
